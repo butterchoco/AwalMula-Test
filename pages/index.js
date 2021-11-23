@@ -1,11 +1,18 @@
+import GridSection from "@/Components/GridSection";
+import HorizontalSection from "@/Components/HorizontalSection";
 import LayoutDefault from "@/Components/layout/default";
-import ProductsSection from "../components/ProductsSection";
-import { fetchData } from "../utils/Helper";
+import ProductList from "@/Components/ProductList";
+import { Text } from "@chakra-ui/layout";
 
 const Home = () => {
   return (
     <LayoutDefault title="Home | Awal Mula">
-      <ProductsSection />
+      <HorizontalSection>
+        <ProductList />
+      </HorizontalSection>
+      <GridSection title="Semua Produk">
+        <ProductList />
+      </GridSection>
     </LayoutDefault>
   );
 };
