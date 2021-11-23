@@ -17,6 +17,11 @@ const ProductCard = ({ data }) => {
       fontSize="14px"
       borderRadius="lg"
       cursor="pointer"
+      _hover={{
+        _hover: {
+          color: "green.400",
+        },
+      }}
     >
       <Box display="flex" alignItems="center" justifyContent="center">
         <Image

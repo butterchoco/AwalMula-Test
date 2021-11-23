@@ -1,6 +1,6 @@
-export const fetchData = async (url, options) => {
+export const fetchData = async (url, { body, method, headers } = {}) => {
   try {
-    const promise = await fetch(url, options);
+    const promise = await fetch(url, { body, method, headers });
     const data = await promise.json();
     return [data, null];
   } catch (e) {

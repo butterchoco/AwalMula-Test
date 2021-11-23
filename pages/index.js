@@ -23,7 +23,7 @@ const Home = () => {
                 height={isTabletDisplay ? "100px" : "250px"}
                 minWidth={isTabletDisplay ? "250px" : "70%"}
                 borderRadius="md"
-                p="5%"
+                p={isTabletDisplay ? "1rem" : "5%"}
                 display="flex"
                 flexDirection="column"
                 justifyContent="center"

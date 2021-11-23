@@ -27,25 +27,7 @@ const LayoutDefault = ({ children, title, heads }) => {
         {heads}
       </Head>
       <Navbar trigger={trigger} />
-      <Box
-        position="relative"
-        backgroundColor="#fafafa"
-        pt={isTabletDisplay ? "15vh" : "10vh"}
-        zIndex="1"
-      >
-        {isTabletDisplay && (
-          <Box
-            position="absolute"
-            zIndex="0"
-            top="0"
-            left="50%"
-            transform="translateX(-50%)"
-            width="110%"
-            height="15vh"
-            backgroundColor="green.400"
-            borderBottomRadius="full"
-          />
-        )}
+      <Box position="relative" backgroundColor="#fafafa" pt="8vh" zIndex="1">
         <Box ref={containerRef} position="relative">
           {children}
         </Box>
