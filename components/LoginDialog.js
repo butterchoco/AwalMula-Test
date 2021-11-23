@@ -23,9 +23,11 @@ const LoginDialog = ({ isCategoryShow, trigger }) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isLoading, setLoading] = useState(false);
   const [_, setCookie] = useCookies(["authUser"]);
 
   const onSubmit = async () => {
+    setLoading(true);
     const [data, error] = await fetchData(API_FRONTEND_URL + "/api/login", {
       method: "POST",
       headers: {
@@ -37,7 +39,9 @@ const LoginDialog = ({ isCategoryShow, trigger }) => {
       }),
     });
 
+    setLoading(false);
     if (error) {
+      alert("Error Masuk ke Akun");
       console.log(error);
       return;
     }
@@ -98,6 +102,7 @@ const LoginDialog = ({ isCategoryShow, trigger }) => {
                 color="green.400"
                 variant="outline"
                 colorScheme="green"
+                isLoading={isLoading}
                 onClick={onSubmit}
               >
                 Masuk
