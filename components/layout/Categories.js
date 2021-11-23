@@ -8,7 +8,7 @@ import useWindowSize from "@/Hooks/UseWindowSize";
 const Categories = ({ isOpen }) => {
   const { isTabletDisplay } = useWindowSize();
   const { categories } = useDataAPI();
-  const [categorySelected, setCategorySelected] = useState(1);
+  const [categorySelected, setCategorySelected] = useState(0);
   const categoryList = categories ? categories.children_data : [];
   const formattedCategoryList =
     categoryList.length !== 0 ? categoryList.slice(1, categoryList.length) : [];
@@ -20,13 +20,13 @@ const Categories = ({ isOpen }) => {
       {isOpen && (
         <motion.div
           initial={{ height: "0" }}
-          animate={{ height: "40vh" }}
+          animate={{ height: isTabletDisplay ? "90vh" : "40vh" }}
           exit={{ height: "0" }}
-          transition={{ type: "tween", duration: 0.2 }}
+          transition={{ type: "tween", duration: isTabletDisplay ? 0.05 : 0.2 }}
           style={{
             width: "100%",
             zIndex: "1",
-            maxHeight: "40vh",
+            maxHeight: isTabletDisplay ? "90vh" : "40vh",
           }}
         >
           <Box
@@ -35,7 +35,6 @@ const Categories = ({ isOpen }) => {
             height="100%"
             borderTopWidth="1px"
             marginTop="1rem"
-            paddingTop="1rem"
           >
             <Box
               display="flex"
@@ -110,7 +109,10 @@ const Categories = ({ isOpen }) => {
                   {formattedCategoryList[categorySelected].children_data.map(
                     (data, index) => (
                       <VStack width="100%" key={index} alignItems="flex-start">
-                        <Text fontSize="12px" fontWeight="semibold">
+                        <Text
+                          fontSize={isTabletDisplay ? "14px" : "12px"}
+                          fontWeight="semibold"
+                        >
                           {data.name}
                         </Text>
                         <VStack alignItems="flex-start">
@@ -119,7 +121,7 @@ const Categories = ({ isOpen }) => {
                               <Link key={idx} href="/" passHref>
                                 <Text
                                   cursor="pointer"
-                                  fontSize="12px"
+                                  fontSize={isTabletDisplay ? "14px" : "12px"}
                                   color="blackAlpha.800"
                                   _hover={{
                                     color: "green",

@@ -9,5 +9,6 @@
       "@/Reusables/*": ["components/reusables/*"],
       "@/Utils/*": ["utils/*"]
     }
-  }
+  },
+  "checkjs": true
 }
