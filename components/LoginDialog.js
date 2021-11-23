@@ -41,8 +41,12 @@ const LoginDialog = ({ isCategoryShow, trigger }) => {
 
     setLoading(false);
     if (error) {
-      alert("Error Masuk ke Akun");
+      alert(error);
       console.log(error);
+      return;
+    } else if (data.error) {
+      alert(data.error);
+      console.log(data.error);
       return;
     }
     setCookie("_t", data.data, { path: "/" });

@@ -10,7 +10,11 @@ const handler = async (req, res) => {
     },
     body: JSON.stringify(body),
   });
-  if (error) return res.status(400).send(error);
+  if (error || data.errors) {
+    res.status(400);
+    res.send(JSON.stringify({ error: data.message }));
+    return;
+  }
   return res.status(200).json({ data });
 };
 
