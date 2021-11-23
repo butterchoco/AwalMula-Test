@@ -84,7 +84,13 @@ const Navbar = ({ trigger }) => {
         {!cookie["_t"] ? (
           <LoginDialog isCategoryShow={isOpen} trigger={trigger} />
         ) : (
-          <Button size="sm" colorScheme="red" onClick={onLogout}>
+          <Button
+            variant={isTabletDisplay && !isOpen && !trigger ? "solid" : "ghost"}
+            px="1rem"
+            size="sm"
+            colorScheme="red"
+            onClick={onLogout}
+          >
             Logout
           </Button>
         )}

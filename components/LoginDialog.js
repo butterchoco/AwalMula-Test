@@ -49,6 +49,7 @@ const LoginDialog = ({ isCategoryShow, trigger }) => {
     <>
       <Button
         size="sm"
+        px="1rem"
         variant={
           isTabletDisplay && !isCategoryShow && !trigger ? "ghost" : "outline"
         }
