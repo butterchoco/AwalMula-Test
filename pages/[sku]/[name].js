@@ -17,12 +17,12 @@ import {
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-const productsId = () => {
+const ProductsId = () => {
+  const [product, setProduct] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(0);
   const { isMobileDisplay } = useWindowSize();
   const router = useRouter();
   const { query } = router;
-  const [product, setProduct] = useState(null);
-  const [selectedImage, setSelectedImage] = useState(0);
 
   useEffect(() => {
     if (query.sku) fetchProducts();
@@ -200,4 +200,4 @@ const productsId = () => {
   );
 };
 
-export default productsId;
+export default ProductsId;
