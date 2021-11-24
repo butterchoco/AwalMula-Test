@@ -1,3 +1,4 @@
+import useWindowSize from "@/Components/hooks/UseWindowSize";
 import styled from "@emotion/styled";
 import { useEffect, useRef, useState } from "react";
 
@@ -17,7 +18,6 @@ const Wrapper = styled.div`
   align-items: center;
   overflow-x: auto;
   border-radius: 20px;
-  border: 1px solid #222;
   padding: 1rem;
 
   ::-webkit-scrollbar {
@@ -32,21 +32,11 @@ const Slider = styled.div`
   align-items: center;
   grid-gap: 10px;
   position: relative;
-  transform: translateX(
-    ${({ pos }) => {
-      console.log(pos);
-      return pos;
-    }}%
-  );
+  transform: ${({ pos }) => "translateX(" + pos + "%)"};
   -moz-user-select: -moz-none;
   -khtml-user-select: none;
   -webkit-user-select: none;
   transition: transform 0.5s ease;
-
-  /*
-     Introduced in IE 10.
-     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
-   */
   -ms-user-select: none;
   user-select: none;
 
@@ -54,11 +44,6 @@ const Slider = styled.div`
     -moz-user-select: -moz-none;
     -khtml-user-select: none;
     -webkit-user-select: none;
-
-    /*
-     Introduced in IE 10.
-     See http://ie.microsoft.com/testdrive/HTML5/msUserSelect/
-   */
     -ms-user-select: none;
     user-select: none;
   }
@@ -78,6 +63,7 @@ const ArrowButton = styled.button`
 `;
 
 const Carousel = ({ children }) => {
+  const { isMobileDisplay } = useWindowSize();
   const [pos, setPos] = useState(0);
   const [movementX, setMovementX] = useState(0);
   const [slider, setSlider] = useState(null);
@@ -93,36 +79,40 @@ const Carousel = ({ children }) => {
 
   return (
     <Container isGrabbing={isGrabbing}>
-      <ArrowButton
-        style={{
-          display: pos >= 0 ? "none" : "block",
-          position: "absolute",
-          zIndex: "1",
-          top: "50%",
-          left: "-2rem",
-          transform: "translateY(-50%)",
-        }}
-        onClick={() => {
-          setPos((prev) => prev + speed);
-        }}
-      >
-        {"<"}
-      </ArrowButton>
-      <ArrowButton
-        style={{
-          display: pos <= -70 ? "none" : "block",
-          position: "absolute",
-          zIndex: "1",
-          top: "50%",
-          right: "-2.5rem",
-          transform: "translateY(-50%)",
-        }}
-        onClick={() => {
-          setPos((prev) => prev - speed);
-        }}
-      >
-        {">"}
-      </ArrowButton>
+      {!isMobileDisplay && (
+        <>
+          <ArrowButton
+            style={{
+              display: pos >= 0 ? "none" : "block",
+              position: "absolute",
+              zIndex: "1",
+              top: "50%",
+              left: "-1rem",
+              transform: "translateY(-50%)",
+            }}
+            onClick={() => {
+              setPos((prev) => prev + speed);
+            }}
+          >
+            {"<"}
+          </ArrowButton>
+          <ArrowButton
+            style={{
+              display: pos <= -70 ? "none" : "block",
+              position: "absolute",
+              zIndex: "1",
+              top: "50%",
+              right: "-1rem",
+              transform: "translateY(-50%)",
+            }}
+            onClick={() => {
+              setPos((prev) => prev - speed);
+            }}
+          >
+            {">"}
+          </ArrowButton>
+        </>
+      )}
       <Wrapper>
         <Slider
           ref={SliderRef}
