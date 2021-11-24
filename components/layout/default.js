@@ -6,7 +6,6 @@ import useWindowSize from "@/Hooks/UseWindowSize";
 import Navbar from "./Navbar";
 
 const LayoutDefault = ({ children, title, heads }) => {
-  const { isTabletDisplay } = useWindowSize();
   const [trigger, setTrigger] = useState(false);
   const containerRef = useRef(null);
 
@@ -27,7 +26,7 @@ const LayoutDefault = ({ children, title, heads }) => {
         {heads}
       </Head>
       <Navbar trigger={trigger} />
-      <Box position="relative" backgroundColor="#fafafa" pt="8vh" zIndex="1">
+      <Box position="relative" backgroundColor="#fafafa" pt="6rem" zIndex="1">
         <Box ref={containerRef} position="relative">
           {children}
         </Box>
