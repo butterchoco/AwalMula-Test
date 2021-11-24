@@ -1,6 +1,6 @@
 import { Box, Heading } from "@chakra-ui/react";
 import useWindowSize from "./hooks/UseWindowSize";
-import Carousel from "./reusables/gliderJS/Carousel";
+import Carousel from "./reusables/Carousel";
 
 const HorizontalSection = ({ title, children }) => {
   const { isTabletDisplay } = useWindowSize();

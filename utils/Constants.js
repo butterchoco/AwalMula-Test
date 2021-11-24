@@ -10,7 +10,7 @@ export const CATEGORIES_URL = API_URL + "/categories";
 export const CATEGORIES_PRODUCTS_URL = (categoryId) =>
   API_URL + `/categories/${categoryId}/products`;
 export const PRODUCTS_ALL_URL =
-  API_URL + "/products?searchCriteria[pageSize]=10";
+  API_URL + "/products?searchCriteria[pageSize]=20";
 export const TOKEN_URL = API_URL + "/integration/admin/token";
 export const MEDIA_HOST_URL =
   "https://media-www.awalmula.co.id/catalog/product";

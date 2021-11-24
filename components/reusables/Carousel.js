@@ -7,9 +7,7 @@ const Container = styled.div`
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  cursor: ${({ isGrabbing }) => {
-    return isGrabbing ? "grabbing" : "grab";
-  }};
+  width: 100%;
 `;
 
 const Wrapper = styled.div`
