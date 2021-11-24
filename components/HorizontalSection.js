@@ -1,5 +1,6 @@
 import { Box, Heading } from "@chakra-ui/react";
 import useWindowSize from "./hooks/UseWindowSize";
+import Carousel from "./reusables/gliderJS/Carousel";
 
 const HorizontalSection = ({ title, children }) => {
   const { isTabletDisplay } = useWindowSize();
@@ -11,16 +12,7 @@ const HorizontalSection = ({ title, children }) => {
           {title}
         </Heading>
       )}
-      <Box
-        display="flex"
-        justifyContent="flex-start"
-        overflowX="auto"
-        alignItems="center"
-        gridGap="10px"
-        p="1rem"
-      >
-        {children}
-      </Box>
+      <Carousel>{children}</Carousel>
     </Box>
   );
 };

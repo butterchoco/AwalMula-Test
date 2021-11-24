@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <LayoutDefault title="Home | Awal Mula">
-      <Box width={isLaptopDisplay ? "90%" : "50%"} m="auto">
+      <Box width={isLaptopDisplay ? "90%" : "60%"} m="auto">
         <HorizontalSection>
           {Array(5)
             .fill(null)
