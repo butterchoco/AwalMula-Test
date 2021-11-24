@@ -101,26 +101,6 @@ const ProductsId = () => {
                     />
                   </Box>
                 ))}
-                {product["media_gallery_entries"].map((data, index) => (
-                  <Box
-                    minWidth="94px"
-                    minHeight="94px"
-                    maxWidth="94px"
-                    maxHeight="94px"
-                    borderRadius="lg"
-                    borderWidth="1px"
-                    key={index}
-                  >
-                    <Image
-                      boxSize="94px"
-                      src={
-                        MEDIA_HOST_URL +
-                        product["media_gallery_entries"][index].file
-                      }
-                      alt=""
-                    />
-                  </Box>
-                ))}
               </Carousel>
             </Box>
           </VStack>
